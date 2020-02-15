@@ -1,6 +1,21 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+/*cargar de forma automática las clases utilizadas. Cada vez que se intenta inicializar una clase y la clase no existe, el nombre de esta clase se pasa al autoloader y este es ejecutado.
+pues sólo se cargarán las clases que efectivamente se utilicen*/
+function loadFronBack($classname){
+	//var_dump($classname); //string(19) Frontend_Controller
+	//strpos() para buscar una cadena de texto
+	if (strpos($classname, 'CI_') === false) { //TRUE si $a es igual a $b, y son del mismo tipo.
+		$file = APPPATH . 'libraries/' . $classname . '.php';
+		if (file_exists($file) && is_file($file)) {
+			@include_once($file);
+		}
+	}
+}
+
+spl_autoload_register('loadFronBack');
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

@@ -36,6 +36,38 @@ class MY_Model extends CI_Controller {
 		return $this->get(NULL, $single);
 	}
 
+	public function save($data, $id = NULL)
+	{
+		// Insert
+		if ($id === NULL) {
+			$this->db->insert($this->_table_name, $data);
+			$id = $this->db->insert_id();
+		} 
+		// Update
+		else {
+			$filter = $this->_primary_filter;
+			$id = $filter($id);
+			$this->db->where($this->_primary_ley, $id);
+			$this->db->update($this->_table_name, $data);			
+		}
+
+		return $id;
+	}
+
+	public function delete($id)
+	{
+		$filter = $this->_primary_filter;
+		$id = $filter($id);
+
+		if (!$id) {
+			return FALSE;
+		}
+
+		$this->db->where($this->_primary_ley, $id);
+		$this->db->delete($this->_table_name);
+
+	}
+
 }
 
 /* End of file MY_Model.php */

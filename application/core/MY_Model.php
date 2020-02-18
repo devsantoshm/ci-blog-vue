@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MY_Model extends CI_Controller {
+class MY_Model extends CI_Model {
 
 	protected $_table_name = '';
 	protected $_primary_key = 'id';
 	protected $_primary_filter = 'intval';
-	protected $_rules = array();
+	public $_rules = array();
 
 	public function __construct()
 	{

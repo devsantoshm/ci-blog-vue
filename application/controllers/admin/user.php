@@ -11,7 +11,9 @@ class User extends Backend_Controller {
 	public function login()
 	{
 		//echo hash('sha512', 'admin' . config_item('encryption_key'));
+		// Redirect a user if he's already logged in
 		$dashboard = 'admin/dashboard';
+		$this->user_m->loggedin() == FALSE || redirect($dashboard);
 
 		$rules = $this->user_m->rules;
 		$this->form_validation->set_rules($rules);

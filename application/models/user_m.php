@@ -15,10 +15,6 @@ class User_m extends MY_Model {
 		)
 	);
 	public $rules_admin = array(
-		'name' => array(
-			'field' => 'name',
-			'rules' => 'trim|required'
-		),
 		'first_name' => array(
 			'field' => 'first_name',
 			'rules' => 'trim|required'
@@ -61,8 +57,8 @@ class User_m extends MY_Model {
 		if (null !== $user) {
 			// log in user
 			$data = array(
-				'name' => $user->name,
-				'email' => $user->email,
+				'first_name' => $user->first_name,
+				'role' => $user->role,
 				'id' => $user->id,
 				'loggedin' => TRUE,
 			);

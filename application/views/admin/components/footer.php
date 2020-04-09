@@ -38,9 +38,11 @@
 
   <!-- Page level custom scripts -->
   <script src="<?php echo site_url() ?>assets/theme/js/demo/datatables-demo.js"></script>
+  <script src="<?php echo site_url() ?>assets/theme/js/script.js"></script>
 
   <script type="text/javascript">
     $(document).ready(function(){
+      //alert("hola")
       $('ul.navbar-nav li').on('click', function(){
         //alert('hola')
         $('li.active').removeClass('active');

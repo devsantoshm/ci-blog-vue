@@ -13,6 +13,15 @@ class MY_Model extends CI_Model {
 		parent::__construct();
 	}
 
+  public function array_from_post($fields)
+  {
+    $data = array();
+    foreach($fields as $value){
+      $data[$value] = $this->input->post($value);
+    }
+    return $data;
+  }
+
 	public function get($id = NULL, $single=FALSE)
 	{
 		if ($id != NULL) {
@@ -47,7 +56,7 @@ class MY_Model extends CI_Model {
 		else {
 			$filter = $this->_primary_filter;
 			$id = $filter($id);
-			$this->db->where($this->_primary_ley, $id);
+			$this->db->where($this->_primary_key, $id);
 			$this->db->update($this->_table_name, $data);			
 		}
 

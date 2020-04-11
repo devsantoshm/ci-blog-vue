@@ -19,7 +19,7 @@
 							<td><?php echo $area->name ?></td>
 							<td>
 								<button type="button" class="btn btn-sm btn-info shadow-sm" onclick="edit_area(<?php echo $area->id ?>)"><i class="fas fa-edit fa-sm"></i> Editar</button>
-								<button type="button" class="btn btn-sm btn-danger shadow-sm"><i class="fas fa-trash-alt fa-sm"></i> Eliminar</button>
+								<button type="button" class="btn btn-sm btn-danger shadow-sm" onclick="delete_area(<?php echo $area->id ?>)"><i class="fas fa-trash-alt fa-sm"></i> Eliminar</button>
 							</td>
 						</tr>
 					<?php endforeach; ?>

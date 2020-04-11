@@ -13,6 +13,7 @@ class Area extends Backend_Controller {
 	{
 		$this->data['areas'] = $this->area_m->get();
 		$this->data['subview'] = 'admin/area/index';
+    $this->data['areaJS'] = 'assets/theme/js/areaJS.js';
 		$this->load->view('admin/_admin_layout', $this->data);
 	}
 
@@ -48,6 +49,12 @@ class Area extends Backend_Controller {
   {
     $data = $this->area_m->get($id);
     echo json_encode($data);
+  }
+
+  public function ajax_delete($id)
+  {
+    $data = $this->area_m->delete($id);
+    echo json_encode(array("success" => TRUE));
   }
 
   /*public function edit($id = NULL)

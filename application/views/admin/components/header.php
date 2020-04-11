@@ -11,6 +11,7 @@
 
   <title><?php echo $meta_title; ?></title>
 
+  <link href="<?php echo site_url() ?>assets/theme/css/sweetalert2.min.css" rel="stylesheet" type="text/css">
   <link href="<?php echo site_url() ?>assets/theme/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
   <!-- Custom fonts for this template-->

@@ -72,7 +72,7 @@ class MY_Model extends CI_Model {
 			return FALSE;
 		}
 
-		$this->db->where($this->_primary_ley, $id);
+		$this->db->where($this->_primary_key, $id);
 		$this->db->delete($this->_table_name);
 
 	}

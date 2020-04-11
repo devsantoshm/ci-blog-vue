@@ -50,16 +50,14 @@ function save()
         $('#message').append('<div class="alert alert-success">'+
           '<i class="fas fa-check"></i> ' + resp.msg + '</div>')
 
-        $('.alert-success').delay(500).show(10, function() {
-          $(this).delay(3000).hide(10, function() {
-            $(this).remove()
-          });
+        $('.alert-success').delay(1500).hide(10, function() {
+          $(this).remove()
         });
 
-        $('#area-modal').delay(4000).hide(0, function() {
-          $(this).modal('hide')
-          window.location = "area" // Sets the new location of the current window.
-        });
+        // Sets the new location of the current window.
+        setTimeout(function(){
+          window.location = "area"
+        },2000);
 
       }else{
         $.each(resp.messages, function(key, value) {
@@ -78,3 +76,42 @@ function save()
   });
 
 }
+
+function delete_area(id)
+{
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: "No podras revertir la acción!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'Cancelar',
+    confirmButtonText: 'Si, eliminarlo!'
+  }).then((result) => {
+    if (result.value) {
+
+      $.ajax({
+        url: 'area/ajax_delete/' + id,
+        type: 'POST',
+        dataType: 'JSON',
+        success: function(resp){
+          if (resp.success) {
+            Swal.fire({
+              icon: 'success',
+              title: 'Eliminado!',
+              text: 'El registro ha sido eliminado.',
+              showConfirmButton: false,
+              timer: 1800
+            })
+
+            setTimeout(function(){
+              window.location = "area"
+            },1800);
+          }
+        }
+      })
+    }
+  })
+}
+

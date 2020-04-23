@@ -39,7 +39,7 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo site_url() ?>assets/theme/js/demo/datatables-demo.js"></script>
   <script src="<?php echo site_url() ?>assets/theme/js/sweetalert2.min.js"></script>
-  <script src="<?php echo site_url().$areaJS ?>"></script>
+  <script src="<?php echo site_url().$js ?>"></script>
 
   <script type="text/javascript">
     $(document).ready(function(){

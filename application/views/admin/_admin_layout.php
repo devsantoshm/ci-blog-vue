@@ -24,7 +24,7 @@
 
 		      <!-- Page Heading -->
 		      <div class="d-flex align-items-center justify-content-center mb-4">
-		        <h1 class="h5 mb-0 text-gray-800">Examen General para el Egreso de la Escuela Profesional de Ingenieria de Sistemas </h1>
+		        <h1 class="h5 mb-0 text-gray-800">Examen General para el Egresado de la Escuela Profesional de Ingenieria de Sistemas </h1>
 		      </div>
 
           <!-- Gestionar Contenido-->
@@ -40,7 +40,7 @@
 		  <footer class="sticky-footer bg-white">
 		    <div class="container my-auto">
 		      <div class="copyright text-center my-auto">
-		        <span>Copyright &copy; EGE-EPIS <sup>v1</sup> <?php echo date("Y"); ?></span>
+		        <span>Copyright &copy; EGE-EPIS <?php echo date("Y"); ?></span>
 		      </div>
 		    </div>
 		  </footer>

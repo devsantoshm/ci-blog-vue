@@ -13,7 +13,7 @@ class Area extends Backend_Controller {
 	{
 		$this->data['areas'] = $this->area_m->get();
 		$this->data['subview'] = 'admin/area/index';
-    $this->data['areaJS'] = 'assets/theme/js/areaJS.js';
+    $this->data['js'] = 'assets/theme/js/areaJS.js';
 		$this->load->view('admin/_admin_layout', $this->data);
 	}
 

@@ -52,6 +52,18 @@ class User extends Backend_Controller {
     echo json_encode($data);
   }
 
+  public function ajax_edit($id)
+  {
+    $data = $this->user_m->get($id);
+    echo json_encode($data);
+  }
+
+  public function ajax_delete($id)
+  {
+    $data = $this->user_m->delete($id);
+    echo json_encode(array("success" => TRUE));
+  }
+
 	public function login()
 	{
 		//echo hash('sha512', 'admin' . config_item('encryption_key'));
@@ -91,8 +103,10 @@ class User extends Backend_Controller {
   public function _unique_email($str)
   {
     $id = $this->input->post('id');
-    $this->db->where('email', $this->input->post('email'));
+    
+    $this->db->where('email', $this->input->post('email')); 
     !$id || $this->db->where('id !=', $id);//sirve para ingresar el mismo email del usuario a editar
+
     $user = $this->user_m->get();
 
     if(count($user)){

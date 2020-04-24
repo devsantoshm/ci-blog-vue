@@ -22,10 +22,14 @@ function edit_user(id)
     type: 'GET',
     dataType: 'JSON',
     success: function(resp){
-      $('[name="name"]').val(resp.name)
+      $('[name="first_name"]').val(resp.first_name)
+      $('[name="last_name"]').val(resp.last_name)
+      $('[name="birthday"]').val(resp.birthday)
+      $('[name="email"]').val(resp.email)
+      $('[name="role"]').val(resp.role)
       $('#user-modal').modal('show')
-      $('.modal-title').text('Editar user')
-      $('.btn-user').html('<i class="fas fa-edit fa-sm"></i> Editar user')
+      $('.modal-title').text('Editar usuario')
+      $('.btn-user').html('<i class="fas fa-edit fa-sm"></i> Editar usuario')
     }
   })
 }

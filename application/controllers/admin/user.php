@@ -12,7 +12,7 @@ class User extends Backend_Controller {
   {
     $this->data['users'] = $this->user_m->get();
     $this->data['subview'] = 'admin/user/index';
-    $this->data['js'] = 'assets/theme/js/userJS.js';
+    $this->data['js'] = 'assets/theme/js/user.js';
     $this->load->view('admin/_admin_layout', $this->data);
   }
 
@@ -43,9 +43,7 @@ class User extends Backend_Controller {
     }
     else{
       foreach ($_POST as $key => $value) {
-        //if ($value == '') {
-          $data['messages'][$key] = form_error($key);
-       // }
+        $data['messages'][$key] = form_error($key);
       }
     }
 
@@ -66,32 +64,41 @@ class User extends Backend_Controller {
 
 	public function login()
 	{
-		//echo hash('sha512', 'admin' . config_item('encryption_key'));
+		$data = array('success' => FALSE, 'messages' => array());
 		// Redirect a user if he's already logged in
 		$dashboard = 'admin/dashboard';
 		$this->user_m->loggedin() == FALSE || redirect($dashboard);
 
 		$rules = $this->user_m->rules;
 		$this->form_validation->set_rules($rules);
+    $this->form_validation->set_error_delimiters('<div class="invalid-feedback">', '</div>');
 
 		if($this->input->post('enviar') == 1){
 			if ($this->form_validation->run() == TRUE) {
 				
 				// Podemos logearnos
 				if ($this->user_m->login() == TRUE) {
-					redirect($dashboard);
+					$data['dashboard'] = site_url('admin/dashboard');
+          $data['success'] = TRUE;
+          echo json_encode($data);
 				} else {
-					$this->session->set_flashdata('error', 'correo y/o password incorrectos');
-					redirect('admin/user/login');
+          $data['msg'] = 'correo y/o password incorrectos, intentalo nuevamente.';
+          $data['error'] = 'error';
+          echo json_encode($data);
 				}
-				
-			} else {
-				$this->data['error'] = 'error';
 			}
+      else {
+        foreach ($_POST as $key => $value) {
+          $data['messages'][$key] = form_error($key);
+        }
+        echo json_encode($data);
+      }
 
+      return FALSE;
 		}
 
 		$this->data['subview'] = 'admin/user/login';
+    $this->data['js'] = 'assets/theme/js/login.js';
 		$this->load->view('admin/_login_layout', $this->data);
 	}
 

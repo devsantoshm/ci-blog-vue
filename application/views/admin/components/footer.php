@@ -39,8 +39,10 @@
   <!-- Page level custom scripts -->
   <script src="<?php echo site_url() ?>assets/theme/js/demo/datatables-demo.js"></script>
   <script src="<?php echo site_url() ?>assets/theme/js/sweetalert2.min.js"></script>
+  <?php if (isset($js)): ?>
   <script src="<?php echo site_url().$js ?>"></script>
-
+  <?php endif; ?>
+  
   <script type="text/javascript">
     $(document).ready(function(){
       //alert("hola")
